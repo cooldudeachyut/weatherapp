@@ -9,8 +9,6 @@ async function fetchWeatherData(locationString, API_KEY)	{
 	return weatherData;
 }
 
-(function ()	{
+(function()	{
 	fetchWeatherData('Lucknow', API_KEY).then(resolve => {	displayWeatherDetails(resolve, container)	});
 })();
-
-
