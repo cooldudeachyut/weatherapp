@@ -130,6 +130,7 @@ function createInfoCard(weatherData)
 	const tempBox = basicElementFactory('div', 'temp-box');
 	const temp = basicElementFactory('p', undefined, 'temp-text');
 	temp.innerText = `${Math.round(weatherData['main']['temp'])}°C`;
+	temp.addEventListener('click', changeTemperatureUnits);
 	tempBox.append(temp);
 
 	const locationBox = basicElementFactory('div', 'location-box');
@@ -189,9 +190,24 @@ function changeMainBackgroundImg(imgNode)
 	}).catch(() => console.log("Error in loading image"));
 }
 
-export function displayWeatherDetails(weatherData, containerNode)	{
+export function displayWeatherDetails(weatherData, containerNode)	
+{
 	changeMainBackgroundImg(containerNode);
 	containerNode.append(createUpperBar());
 	containerNode.append(createInfoCard(weatherData));
 	containerNode.append(createLowerBar());
+}
+
+function changeTemperatureUnits(event)
+{
+	const	target = event.target;
+	const temperatureString = target.innerText;
+	const temp = Number(temperatureString.substr(0, temperatureString.length - 2));
+
+	if (temperatureString[temperatureString.length - 1] === 'C')
+	{
+		target.innerText = `${Math.round(((9 / 5) * temp) + 32)}°F`;
+	} else {
+		target.innerText = `${Math.round((temp - 32) * (5/9))}°C`;
+	}
 }
