@@ -4,7 +4,7 @@ import Day from '../assets/day.jpg';
 import Night from '../assets/night.jpg';
 import Weather from '../assets/weather.jpg';
 
-function basicElementFactory(...elementDetails)	{ //Element tag name, Element id (send value as undefined for no id), Element class 1, class 2 ....
+export function basicElementFactory(...elementDetails)	{ //Element tag name, Element id (send value as undefined for no id), Element class 1, class 2 ....
 	let div = document.createElement(elementDetails[0]);
 
 	for (let i = 1; i < elementDetails.length; i++)	{
@@ -19,7 +19,7 @@ function basicElementFactory(...elementDetails)	{ //Element tag name, Element id
 
 function createUpperBar()
 {
-	const upperBar = basicElementFactory('div', undefined, 'upper-bar');
+	const upperBar = basicElementFactory('div', 'upper-bar');
 
 	const logoContainer = basicElementFactory('div', undefined, 'logo-container');
 	const logoText = basicElementFactory('p');
@@ -39,7 +39,7 @@ function createUpperBar()
 
 function createLowerBar()
 {
-	const lowerBar = basicElementFactory('div', undefined, 'lower-bar');
+	const lowerBar = basicElementFactory('div', 'lower-bar');
 	return lowerBar;
 }
 
@@ -126,6 +126,8 @@ function createInfoCard(weatherData)
 	updateDateAndTimeIndefinitely(timeBox, dateBox);
 	infoCard.append(timeBox);
 	infoCard.append(dateBox);
+
+	if (weatherData === 'default')	return infoCard;
 
 	const tempBox = basicElementFactory('div', 'temp-box');
 	const temp = basicElementFactory('p', undefined, 'temp-text');

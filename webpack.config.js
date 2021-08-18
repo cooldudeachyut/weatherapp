@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     index : './src/scripts/index.js',
     display: './src/scripts/display.js',
+    search: './src/scripts/search.js',
   },
   mode: 'development',
   output: {
