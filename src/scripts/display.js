@@ -1,4 +1,3 @@
-import '../styles/style.css';
 import Logo from '../assets/logo_white_cropped.png';
 import Day from '../assets/day.jpg';
 import Night from '../assets/night.jpg';
