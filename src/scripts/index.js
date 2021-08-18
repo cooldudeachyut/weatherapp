@@ -6,7 +6,7 @@ const container = document.getElementById('container');
 
 async function fetchWeatherData(locationString, API_KEY)	
 {
-	const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${locationString}&appid=${API_KEY}&units=metric`);
+	const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locationString}&appid=${API_KEY}&units=metric`);
 	const weatherData = await response.json();
 	return weatherData;
 }
